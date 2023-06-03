@@ -1,0 +1,15 @@
+--theme|-t THEME
+--layout|-a LAYOUT
+--top TOP
+--xpos|-x INT --xoffset INT
+--ypos|-y INT --yoffset INT
+--width|-w INT --height INT
+--prompt|-p PROMPT 
+--filter|-f FILTER
+--orientation|-o ORIENTATION
+--list-directory|-d DIRECTORY
+--bottom|-b
+--verbose --dryrun
+--sensitive
+--help|-h
+--version|-v

@@ -1,0 +1,10 @@
+change appearance of the menu  
+
+default theme (~/.config/i3menu/default) will be
+created and used if not specified.
+
+    foreground = #83e736
+    background = #000000
+    foreground_selected = #FFFFFF
+    background_selected = #0000c6
+    font = monospace

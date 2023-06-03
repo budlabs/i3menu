@@ -1,0 +1,57 @@
+#!/bin/bash
+
+: "${XDG_CONFIG_HOME:=$HOME/.config}"
+: "${I3_MENU_CONF_DIR:=$XDG_CONFIG_HOME/i3menu}"
+
+main(){
+
+  declare -a menu_options
+
+  set_theme
+  set_layout
+
+  # if we have stuff on stdin, put
+  # that in a tempfile that way we can do stuff ( wc in setincludes() )
+  # without worrying that we close and lose whats in stdin
+  _tmp_list_file=$(mktemp)
+  trap 'rm -f "$_tmp_list_file"' EXIT INT
+
+  _command=dmenu
+
+  if [[ -d ${_o[list-directory]} ]]; then
+    l=("${_o[list-directory]%/}/"*)
+    printf "%s\n" "${l[@]##*/}" > "$_tmp_list_file"
+  elif [[ ! -t 0 ]]; then
+    cp /dev/stdin "$_tmp_list_file"
+    # if STDIN was empty, delete tmp file
+    [[ $(< "$_tmp_list_file") ]] || rm "$_tmp_list_file"
+  else
+    rm "$_tmp_list_file"
+  fi
+
+  [[ ${_o[sensitive]} ]] || menu_options+=(-i)
+  [[ ${_o[bottom]} ]]    && menu_options+=(-b)
+  [[ ${_o[filter]} ]]    && menu_options+=(-F "${_o[filter]}")
+  [[ ${_o[prompt]} ]]    && menu_options+=(-p "${_o[prompt]}")
+
+  selected=$(
+    if [[ -f $_tmp_list_file && ${_o[top]} ]]; then
+      awk -f <(topsort) "$_tmp_list_file"
+    elif [[ -f $_tmp_list_file ]]; then
+      cat "$_tmp_list_file"
+    else
+      printf '%s' ''
+    fi | {
+      ((_o[verbose])) && ERM "$_command" "${menu_options[@]}" "$@"
+      ((_o[dryrun]))  || "$_command" "${menu_options[@]}" "$@"
+    }
+  )
+
+  [[ $selected ]] || exit
+
+  [[ -d ${_o[list-directory]} ]] && echo -n "${_o[list-directory]%/}/"
+  echo "$selected"
+}
+
+__dir=$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")  #bashbud
+source "$__dir/_init.sh"                               #bashbud
