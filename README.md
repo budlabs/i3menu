@@ -1,6 +1,6 @@
 # i3menu
 
-i3menu is a bashscript that uses [i3ass] to launch a
+i3menu is a bashscript that enhances and launches a
 [fork of dmenu] in cool i3 specific ways. It can
 for instance make a menu overlay the current
 windows title-bar or the whole window. If the current
@@ -29,10 +29,10 @@ Build dependencies:
 
 Runtime dependencies: 
   - [dmenu-bud]
-  - [i3ass] ([i3wm])
   - gawk
   - bash
-  - xdotool (*optional*)
+  - [i3ass] ([i3wm]) (*optional* `--layout`)
+  - xdotool (*optional* `--mouse`)
 
 ``` text
 $ git clone https://github.com/budlabs/i3menu.git

@@ -15,10 +15,10 @@ Build dependencies:
 
 Runtime dependencies: 
   - [dmenu-bud]
-  - [i3ass] ([i3wm])
   - gawk
   - bash
-  - xdotool (*optional*)
+  - [i3ass] ([i3wm]) (*optional* `--layout`)
+  - xdotool (*optional* `--mouse`)
 
 ``` text
 $ git clone https://github.com/budlabs/i3menu.git
