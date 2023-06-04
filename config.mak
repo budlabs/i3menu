@@ -39,4 +39,6 @@ README.md: $(CACHE_DIR)/long_help.md $(CACHE_DIR)/help_table.txt $(wildcard $(DO
 		echo '```  '
 		echo
 		cat $(CACHE_DIR)/long_help.md
+		echo
+		cat $(DOCS_DIR)/readme_links.md
 	} > $@

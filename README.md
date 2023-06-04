@@ -23,7 +23,10 @@ and resolve conflicts of other dmenu installations.
 
 ### manual installation
 
-Build dependencies: GNU/make , gawk
+Build dependencies: 
+  - GNU/make
+  - gawk
+
 Runtime dependencies: 
   - [dmenu-bud]
   - [i3ass] ([i3wm])
@@ -50,7 +53,7 @@ $ make
 -f, --filter         FILTER      | sets initial inputbox text
 --height             INT         | overrides the calculated height of the menu.  
 -h, --help                       | print help and exit  
--a, --layout         LAYOUT      | mouse, window, titlebar, tab, A, B, C, D  
+-a, --layout         LAYOUT      | mouse, window, titlebar, tab, A, B, C, D, AC, BD 
 -d, --list-directory DIRECTORY   | content of DIRECTORY will be list  
 -o, --orientation    ORIENTATION | vertical|horizontal  
 -p, --prompt         PROMPT      | Sets the prompt of the menu to PROMPT 
@@ -68,8 +71,6 @@ $ make
 
 ### -a, --layout         LAYOUT      
 
-This is where **i3menu** differs the most from normal **rofi** behavior and is the only option that truly depends on `i3`, `i3list` (and **i3fyra** if the value is A|B|C|D). If this option is not set, the menu will default to a single line (*dmenu like*) menu at the top of the screen. If however a value to this option is one of the following:  
-
 - mouse       
   At the mouse position (requires `xdotool`)
 
@@ -85,6 +86,8 @@ This is where **i3menu** differs the most from normal **rofi** behavior and is t
 - A,B,C or D  
   The **i3fyra** container of the same name if it is visible. If target container isn't visible the menu will be displayed at the default location.
 
+- AC , BD
+  Menu will cover visible containers in the given family.
 
 titlebar and tab LAYOUT will be displayed as a single line (*dmenu like*) menu, and the other LAYOUTS will be of vertical (*combobox*) layout with the prompt and entrybox above the list.  
 
@@ -138,3 +141,13 @@ is set to `-50`, the menu will be placed 50 pixels
 to the left of the active window but have the same
 dimensions as the window.
 
+
+[i3ass]: https://github.com/budlabs/i3ass
+[fork of dmenu]: https://github.com/budRich/dmenu
+[dmenu fork]: https://github.com/budRich/dmenu
+[dmenu-bud]: https://github.com/budRich/dmenu
+[xdotool]: https://github.com/jordansissel/xdotool
+[i3fyra]: https://github.com/budlabs/i3ass/wiki/i3fyra
+[i3menu AUR package]: https://aur.archlinux.org/packages/i3menu
+[dmenu-bud AUR package]: https://aur.archlinux.org/packages/dmenu-bud
+[i3wm]: https://i3wm.org

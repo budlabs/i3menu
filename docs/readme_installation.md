@@ -9,7 +9,10 @@ and resolve conflicts of other dmenu installations.
 
 ### manual installation
 
-Build dependencies: GNU/make , gawk
+Build dependencies: 
+  - GNU/make
+  - gawk
+
 Runtime dependencies: 
   - [dmenu-bud]
   - [i3ass] ([i3wm])
