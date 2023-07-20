@@ -9,7 +9,7 @@
 --orientation|-o ORIENTATION
 --list-directory|-d DIRECTORY
 --include|-i STRING
---fallback|-f STRING
+--fallback STRING
 --bottom|-b
 --verbose --dryrun
 --sensitive
