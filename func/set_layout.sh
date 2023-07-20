@@ -128,7 +128,14 @@ set_layout()
 
   for k in x y W H ; do
     # !!!! H 20 doesnt work???
-    [[ $k = H && ${!k} -eq 20 ]] && k=21
-    [[ ${!k} ]] && menu_options+=("-${k^^}" "${!k}")
+    if [[ $k = H && ${!k} = 0 ]]
+      then menu_options+=("-H" "${i3list[WAH]}")
+    elif [[ $k = W && ${!k} = 0 ]]
+      then menu_options+=("-W" "${i3list[WAW]}")
+    elif [[ $k = H && ${!k} -eq 20 ]]
+      then menu_options+=("-H" 21)
+    elif [[ ${!k} ]]
+      then menu_options+=("-${k^^}" "${!k}")
+    fi
   done
 }
