@@ -5,6 +5,12 @@
 
 main(){
 
+  for deprecated in include fallback ; do
+    [[ ${_o[$deprecated]} ]] \
+      && ERR "option '--$deprecated' has been" \
+             "deprecated and has no effect"
+  done
+
   declare -a menu_options
 
   set_theme
