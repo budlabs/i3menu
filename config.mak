@@ -1,6 +1,6 @@
 NAME         := i3menu
-VERSION      := 0.3.3
-UPDATED      := 2023-07-20
+VERSION      := 0.3.4
+UPDATED      := 2025-03-30
 CREATED      := 2018-07-21
 AUTHOR       := budRich
 CONTACT      := https://github.com/budlabs/i3menu

@@ -327,9 +327,10 @@ $(CACHE_DIR)/options_in_use $(getopt) &: $(OPTIONS_FILE) | $(CACHE_DIR)/
 		print "while true; do"
 		print "  case \"$$1\" in"
 		printf ("    --%-" longest+1 "s| -%s ) __print_help && exit ;;\n", "help", "h")
+		printf ("    --%-" longest+1 "s| -%s ) __print_version && exit ;;\n", "version", "v")
 		for (o in options)
 		{
-			if (o !~ /^(help)$$/)
+			if (o !~ /^(help|version)$$/)
 			{
 				if ("long_name" in options[o])
 					printf ("    --%-" longest+1 "s", options[o]["long_name"])
